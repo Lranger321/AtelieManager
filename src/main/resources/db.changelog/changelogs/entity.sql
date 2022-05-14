@@ -69,3 +69,7 @@ ALTER TABLE parameter
 ALTER TABLE attribute
     ALTER id SET DEFAULT NEXTVAL('attribute_id_seq');
 --comment: Сиквенсы
+
+--changeset nkozlov:status-column
+ALTER TABLE orders ADD COLUMN status varchar(10) NOT NULL;
+--comment: Добавил колонку статуса заказа

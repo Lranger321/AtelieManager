@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import main.common.OrderStatus;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -22,11 +23,17 @@ public class Order {
     private Long id;
 
     @Column(name = "created_at", nullable = false)
-    private LocalDate localDate;
+    private LocalDate createdAt;
+
+    @ManyToOne
+    private Model model;
 
     @OneToMany(mappedBy = "order")
     private List<Parameter> parameters;
 
     @OneToMany(mappedBy = "order")
     private List<Attribute> attributes;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 }
