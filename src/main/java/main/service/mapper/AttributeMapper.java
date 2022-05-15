@@ -11,6 +11,7 @@ import java.util.List;
 public interface AttributeMapper {
 
     @Mapping(source = "material.name", target = "material")
+    @Mapping(source = "material.type", target = "materialType")
     AttributeDto toDto(Attribute attribute);
 
     List<AttributeDto> toDtos(List<Attribute> attributes);

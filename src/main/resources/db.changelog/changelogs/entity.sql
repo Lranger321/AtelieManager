@@ -73,3 +73,7 @@ ALTER TABLE attribute
 --changeset nkozlov:status-column
 ALTER TABLE orders ADD COLUMN status varchar(10) NOT NULL;
 --comment: Добавил колонку статуса заказа
+
+--changeset nkozlov:date-column
+ALTER TABLE orders ALTER COLUMN created_at TYPE timestamp;
+--comment: Изменил тип данных у даты

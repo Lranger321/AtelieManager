@@ -1,14 +1,14 @@
 package main.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import java.util.List;
 
-@Builder
 @AllArgsConstructor
 @Getter
+@NoArgsConstructor
+@Setter
+@Builder
 public class OrderPageDto {
 
     List<OrderDto> orders;

@@ -5,6 +5,7 @@ import main.common.OrderStatus;
 import main.dto.OrderChangeStatusDto;
 import main.dto.OrderDto;
 import main.dto.OrderPageDto;
+import main.dto.OrderRequestDto;
 import main.service.OrderService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -24,8 +25,8 @@ public class OrderController {
     }
 
     @PostMapping("/")
-    public OrderDto createOrder() {
-        return orderService.createOrder();
+    public OrderDto createOrder(@RequestBody OrderRequestDto request) {
+        return orderService.createOrder(request);
     }
 
     @PostMapping("/changeStatus")

@@ -1,15 +1,14 @@
 package main.dao.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import main.common.OrderStatus;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.List;
 
+@ToString
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,15 +22,19 @@ public class Order {
     private Long id;
 
     @Column(name = "created_at", nullable = false)
-    private LocalDate createdAt;
+    private OffsetDateTime createdAt;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     @ManyToOne
     private Model model;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<Parameter> parameters;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<Attribute> attributes;
 
     @Enumerated(EnumType.STRING)

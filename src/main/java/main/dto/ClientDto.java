@@ -1,12 +1,12 @@
 package main.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
-@Getter
-@Builder
 @AllArgsConstructor
+@Getter
+@NoArgsConstructor
+@Setter
+@Builder
 public class ClientDto {
 
     private String lastName;
