@@ -3,11 +3,10 @@
 --changeset nkozlov:entities
 CREATE TABLE client
 (
-    id          bigint      not null primary key,
-    last_name   varchar(45) not null,
-    first_name  varchar(45) not null,
-    middle_name varchar(45) not null,
-    number      varchar(45) not null
+    id     bigint      not null primary key,
+    name   varchar(45) not null,
+    email  varchar(45) not null,
+    number varchar(45) not null
 );
 CREATE TABLE model
 (
@@ -23,10 +22,13 @@ CREATE TABLE material
 );
 CREATE TABLE orders
 (
-    id         bigint    not null primary key,
-    client_id  bigint    not null,
-    model_id   bigint    not null,
-    created_at timestamp not null,
+    id         bigint      not null primary key,
+    client_id  bigint      not null,
+    model_id   bigint      not null,
+    gender     varchar(10) not null,
+    color      varchar(10) not null,
+    type       varchar(10) not null,
+    created_at timestamp   not null,
     FOREIGN KEY (client_id) REFERENCES client (id),
     FOREIGN KEY (model_id) REFERENCES model (id)
 );
@@ -71,9 +73,11 @@ ALTER TABLE attribute
 --comment: Сиквенсы
 
 --changeset nkozlov:status-column
-ALTER TABLE orders ADD COLUMN status varchar(10) NOT NULL;
+ALTER TABLE orders
+    ADD COLUMN status varchar(10) NOT NULL;
 --comment: Добавил колонку статуса заказа
 
 --changeset nkozlov:date-column
-ALTER TABLE orders ALTER COLUMN created_at TYPE timestamp;
+ALTER TABLE orders
+    ALTER COLUMN created_at TYPE timestamp;
 --comment: Изменил тип данных у даты

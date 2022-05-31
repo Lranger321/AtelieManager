@@ -11,8 +11,10 @@ import java.util.List;
 @Builder
 public class OrderRequestDto {
 
-    private ClientDto clientDto;
+    private ClientDto userInfo;
     private String model;
-    private List<AttributeDto> attributes;
+    private String gender;
+    private String color;
+    private String type;
     private List<ParameterDto> parameters;
 }

@@ -21,6 +21,15 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "gender", nullable = false)
+    private String gender;
+
+    @Column(name = "color", nullable = false)
+    private String color;
+
+    @Column(name = "type", nullable = false)
+    private String type;
+
     @Column(name = "created_at", nullable = false)
     private OffsetDateTime createdAt;
 
@@ -33,9 +42,6 @@ public class Order {
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<Parameter> parameters;
-
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<Attribute> attributes;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;

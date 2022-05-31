@@ -47,12 +47,14 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderDto createOrder(OrderRequestDto request) {
         Order order = Order.builder()
-                .client(clientService.getClient(request.getClientDto()))
+                .color(request.getColor())
+                .type(request.getType())
+                .gender(request.getGender())
+                .client(clientService.getClient(request.getUserInfo()))
                 .model(modelRepository.getModelByName(request.getModel()))
                 .build();
         order.setCreatedAt(OffsetDateTime.now());
         order.setStatus(OrderStatus.BACKLOG);
-        order.setAttributes(getAttributes(request.getAttributes(), order));
         order.setParameters(getParameters(request.getParameters(), order));
         return mapper.toDto(orderRepository.save(order));
     }

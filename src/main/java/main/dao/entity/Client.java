@@ -19,14 +19,11 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "last_name", nullable = false)
-    private String lastName;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
-
-    @Column(name = "middle_name", nullable = false)
-    private String middleName;
+    @Column(name = "email", nullable = false)
+    private String email;
 
     @Column(name = "number", nullable = false)
     private String number;

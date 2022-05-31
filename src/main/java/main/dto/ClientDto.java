@@ -9,8 +9,7 @@ import lombok.*;
 @Builder
 public class ClientDto {
 
-    private String lastName;
-    private String firstName;
-    private String middleName;
+    private String name;
     private String number;
+    private String email;
 }
