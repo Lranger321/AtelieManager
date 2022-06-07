@@ -12,7 +12,7 @@ public enum OrderStatus {
     IN_PROGRESS("В работе"),
     FITTING_WAIT("Ожидается примерка"),
     READY("Ждет клиента"),
-    DONE("Сделан");
+    DONE("Завершен");
 
     private final String name;
 

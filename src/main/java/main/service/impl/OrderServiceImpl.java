@@ -17,7 +17,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,6 +42,11 @@ public class OrderServiceImpl implements OrderService {
                 .build();
     }
 
+    @Override
+    public List<OrderDto> findAll() {
+        return mapper.toDtos(orderRepository.findAll());
+    }
+
     @Transactional
     @Override
     public OrderDto createOrder(OrderRequestDto request) {
@@ -65,6 +69,11 @@ public class OrderServiceImpl implements OrderService {
                 .orElseThrow(() -> new OrderNotFoundException(String.format("Order with id [%d] not found", orderChangeStatusDto.getId())));
         order.setStatus(orderChangeStatusDto.getOrderStatus());
         return mapper.toDto(orderRepository.save(order));
+    }
+
+    @Override
+    public OrderDto getById(Long id) {
+        return mapper.toDto(orderRepository.findById(id).get());
     }
 
     private List<Attribute> getAttributes(List<AttributeDto> attributeDtos, Order order) {

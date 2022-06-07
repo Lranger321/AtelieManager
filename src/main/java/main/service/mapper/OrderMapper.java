@@ -12,10 +12,10 @@ import java.util.List;
 @Mapper
 public interface OrderMapper {
 
-    @Mapping(source = "model.name", target = "modelName")
+    @Mapping(source = "model.name", target = "model")
     OrderDto toDto(Order order);
 
-    @Mapping(source = "model.name", target = "modelName")
+    @Mapping(source = "model.name", target = "model")
     List<OrderDto> toDtos(List<Order> order);
 
     default String map(Material material) {

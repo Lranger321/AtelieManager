@@ -14,8 +14,12 @@ import java.util.List;
 @Builder
 public class OrderDto {
 
+    private Long id;
     private ClientDto client;
-    private String modelName;
+    private String model;
+    private String gender;
+    private String color;
+    private String type;
     private OffsetDateTime createdAt;
     private OrderStatus status;
     private List<ParameterDto> parameters;
